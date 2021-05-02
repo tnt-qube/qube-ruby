@@ -1,5 +1,3 @@
-require 'securerandom'
-
 module Qube
   class Queue
     attr_reader :tubes
@@ -10,6 +8,11 @@ module Qube
       @client     = Client.new
       @tubes      = nil
       @statistics = nil
+    end
+
+    def enqueue(tube, task, options = {})
+      response = @client.post("tubes/#{tube}", tube: tube, task: task, options: options)
+      response.code == 200
     end
 
     def statistics

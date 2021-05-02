@@ -1,3 +1,4 @@
+require 'qube/version'
 require 'qube/config'
 require 'qube/transport/http'
 require 'qube/transport/client'
